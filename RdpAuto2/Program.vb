@@ -12,6 +12,29 @@ Module RdpAutoClick
     Private Sub mouse_event(dwFlags As Integer, dx As Integer, dy As Integer, dwData As Integer, dwExtraInfo As Integer)
     End Sub
 
+    <DllImport("user32.dll", SetLastError:=True)>
+    Private Function FindWindow(lpClassName As String, lpWindowName As String) As IntPtr
+    End Function
+
+    Function WaitForWindow(title As String, timeoutMs As Integer) As Boolean
+
+        Dim elapsed As Integer = 0
+        Dim interval As Integer = 100
+
+        While elapsed < timeoutMs
+            Dim hWnd As IntPtr = FindWindow(Nothing, title)
+
+            If hWnd <> IntPtr.Zero Then
+                Return True
+            End If
+
+            Thread.Sleep(interval)
+            elapsed += interval
+        End While
+
+        Return False
+    End Function
+
     Private Const MOUSEEVENTF_LEFTDOWN As Integer = &H2
     Private Const MOUSEEVENTF_LEFTUP As Integer = &H4
 
@@ -61,9 +84,10 @@ Module RdpAutoClick
             Thread.Sleep(100)
             ClickAt(rdpX, rdpY)
 
-            ' Wait for popup (double tap)
-            Thread.Sleep(500)
-            Thread.Sleep(250)
+            If Not WaitForWindow("Remote Desktop Connection security warning", 5000) Then
+                Console.WriteLine("RDP window did not appear.")
+                Return
+            End If
 
             startIndex = 5
 
@@ -99,8 +123,11 @@ Module RdpAutoClick
             End Try
 
             ' Wait for popup
-            Thread.Sleep(500)
-            Thread.Sleep(250)
+
+            If Not WaitForWindow("Remote Desktop Connection security warning", 5000) Then
+                Console.WriteLine("RDP window did not appear.")
+                Return
+            End If
             startIndex = 3
         End If
 
