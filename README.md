@@ -7,12 +7,12 @@ Automates clicking through the new RDP security prompt.
 
 ### Path mode (most reliable)
 
-RdpAutoClick.exe "C:\file.rdp" <connectX> <connectY> <optional pre click x and ys>
+RdpAutoClick.exe "C:\file.rdp" [connectX] [connectY] [optional pre click x and ys]
 
 
 ### Click mode
 
-RdpAutoClick.exe click <rdpX> <rdpY> <connectX> <connectY> <optional pre click x and ys>
+RdpAutoClick.exe click [rdpX] [rdpY] [connectX] [connectY] [optional pre click x and ys]
 
 
 
