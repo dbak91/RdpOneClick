@@ -7,7 +7,7 @@ Automates clicking through the new RDP security prompt.
 
 ## C# Source Notes
 95% Visual Basic Human-developed, 100% C# LLM-(claude)-converted. 
-First developed and ironed out behaviour in visual basic, then after realising dependencies and file size the visual basic source code was forwarded to claude asking for conversion to c#. 
+First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size the source code was forwarded to Claude LLM asking for conversion to C#. 
 
 ## Modes
 
@@ -19,7 +19,7 @@ RdpAutoClick.exe "C:\\file.rdp" \[connectX] \[connectY] \[optional pre click x a
 
 ### Click mode
 
-RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre click x and ys]
+RdpAutoClick.exe **click** \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre click x and ys]
 
 
 
