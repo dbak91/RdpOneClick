@@ -4,6 +4,11 @@
 
 Automates clicking through the new RDP security prompt.
 
+
+## C# Source Notes
+95% Visual Basic Human-developed, 100% C# LLM-(claude)-converted. 
+First developed and ironed out behaviour in visual basic, then after realising dependencies and file size the visual basic source code was forwarded to claude asking for conversion to c#. 
+
 ## Modes
 
 ### Path mode (most reliable)
@@ -55,4 +60,3 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 E.g.) Target: # C:\\Users\\BAKERDA\\RdpAuto2.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561
 6. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
 7. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe
-
