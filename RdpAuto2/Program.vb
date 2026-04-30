@@ -1,6 +1,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Threading
 Imports System.Diagnostics
+Imports System.Windows.Forms
 
 Module RdpAutoClick
 
@@ -70,12 +71,12 @@ Module RdpAutoClick
             Dim rdpY As Integer
 
             If Not Integer.TryParse(args(1), rdpX) OrElse Not Integer.TryParse(args(2), rdpY) Then
-                Console.WriteLine("Invalid RDP click coordinates.")
+                MessageBox.Show("Invalid RDP click coordinates.")
                 Return
             End If
 
             If Not Integer.TryParse(args(3), connectX) OrElse Not Integer.TryParse(args(4), connectY) Then
-                Console.WriteLine("Invalid connect coordinates.")
+                MessageBox.Show("Invalid connect coordinates.")
                 Return
             End If
 
@@ -85,7 +86,7 @@ Module RdpAutoClick
             ClickAt(rdpX, rdpY)
 
             If Not WaitForWindow("Remote Desktop Connection security warning", 5000) Then
-                Console.WriteLine("RDP window did not appear.")
+                MessageBox.Show("RDP window did not appear.")
                 Return
             End If
 
@@ -104,7 +105,7 @@ Module RdpAutoClick
             Dim rdpPath As String = args(0)
 
             If Not Integer.TryParse(args(1), connectX) OrElse Not Integer.TryParse(args(2), connectY) Then
-                Console.WriteLine("Invalid connect coordinates.")
+                MessageBox.Show("Invalid connect coordinates.")
                 Return
             End If
 
@@ -118,14 +119,14 @@ Module RdpAutoClick
 
                 Process.Start(psi)
             Catch ex As Exception
-                Console.WriteLine("Failed to start mstsc: " & ex.Message)
+                MessageBox.Show("Failed to start mstsc: " & ex.Message)
                 Return
             End Try
 
             ' Wait for popup
 
             If Not WaitForWindow("Remote Desktop Connection security warning", 5000) Then
-                Console.WriteLine("RDP window did not appear.")
+                MessageBox.Show("RDP window did not appear.")
                 Return
             End If
             startIndex = 3
@@ -142,7 +143,7 @@ Module RdpAutoClick
             Dim preY As Integer
 
             If Not Integer.TryParse(args(i), preX) OrElse Not Integer.TryParse(args(i + 1), preY) Then
-                Console.WriteLine("Invalid pre-click coordinates at position " & i)
+                MessageBox.Show("Invalid pre-click coordinates at position " & i)
                 Return
             End If
 
@@ -160,13 +161,11 @@ Module RdpAutoClick
     End Sub
 
     Sub ShowUsage()
-        Console.WriteLine("Usage:")
-        Console.WriteLine("")
-        Console.WriteLine("Click mode:")
-        Console.WriteLine("  RdpAutoClick.exe click <rdpX> <rdpY> <connectX> <connectY> [preX preY]...")
-        Console.WriteLine("")
-        Console.WriteLine("Path mode:")
-        Console.WriteLine("  RdpAutoClick.exe <rdpPath> <connectX> <connectY> [preX preY]...")
+        MessageBox.Show("Usage:" + Environment.NewLine +
+        "Click mode:" + Environment.NewLine +
+        "  RdpAutoClick.exe click <rdpX> <rdpY> <connectX> <connectY> [preX preY]..." + Environment.NewLine +
+        "Path mode:" + Environment.NewLine +
+        "  RdpAutoClick.exe <rdpPath> <connectX> <connectY> [preX preY]...")
     End Sub
 
 End Module
