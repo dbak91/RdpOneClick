@@ -54,9 +54,9 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 1. Copy contents of 'powershell\_command.find\_pos.txt' into Powershell and press enter confirming any 'multi-line' warnings
 2. Keeping powershell visible, hover over the rdp file and note down the x and y values then open, similarly for any wanted pre-clicks such as clipboard as well as the final connect button position.
 2.b If Using path mode, right click rdp file and choose "copy as path"
-3. Extract RdpAuto2Exe.zip to a suitable location.
-4. Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
-5. Edit desktop shortcut properties target to include parameters: See Usage,
+4. Extract RdpAuto2Exe.zip to a suitable location.
+5. Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
+6. Edit desktop shortcut properties target to include parameters: See Usage,
 E.g.) Target: # C:\\Users\\BAKERDA\\RdpAuto2.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561
-6. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
-7. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe
+7. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
+8. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe
