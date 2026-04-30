@@ -22,6 +22,17 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 
 
 
+Path mode
+
+
+
+RdpAuoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" 100 650 900 520
+
+
+
+Click Mode:
+
+
 RdpAutoClick.exe click 800 500 1100 650 900 520
 
 
