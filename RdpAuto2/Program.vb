@@ -63,7 +63,7 @@ Module RdpAutoClick
 
             ' Wait for popup (double tap)
             Thread.Sleep(700)
-            Thread.Sleep(700)
+            ' Thread.Sleep(700)
 
             startIndex = 5
 
@@ -99,7 +99,7 @@ Module RdpAutoClick
             End Try
 
             ' Wait for popup
-            Thread.Sleep(1500)
+            Thread.Sleep(700)
 
             startIndex = 3
         End If
