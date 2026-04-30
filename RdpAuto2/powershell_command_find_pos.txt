@@ -1,0 +1,6 @@
+Add-Type -AssemblyName System.Windows.Forms
+while ($true) {
+     $pos = [System.Windows.Forms.Cursor]::Position
+     Write-Host "$($pos.X), $($pos.Y)"
+     Start-Sleep -Milliseconds 200
+ }
