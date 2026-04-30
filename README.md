@@ -33,6 +33,7 @@ RdpAuoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" 100 650 900 520
 Click Mode:
 
 
+
 RdpAutoClick.exe click 800 500 1100 650 900 520
 
 
@@ -53,5 +54,5 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 5. Edit desktop shortcut properties target to include parameters: See Usage,
 E.g.) Target: # C:\\Users\\BAKERDA\\RdpAuto2.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561
 6. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
-7. Optionally change the icon of the shortcut to not be the bland exe thumbnail. If you can find the rdp icon use that!
+7. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe
 
