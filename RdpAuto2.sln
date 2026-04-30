@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdpCSharp", "RdpCSharp\RdpCSharp.csproj", "{617FE4D5-01D5-4A93-B726-A1E3F38DC462}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdpAutoClick", "RdpCSharp\RdpAutoClick.csproj", "{617FE4D5-01D5-4A93-B726-A1E3F38DC462}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
