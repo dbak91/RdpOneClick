@@ -72,7 +72,7 @@ E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Deskto
 
 ## Tips
 # Getting Coordinates
-Use a pen or phone to note down the stairs coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
+Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
 ## Too many desktop icons
 Move original rdp files to a folder and use the tools Path Mode.
 ## Repetitive setup
