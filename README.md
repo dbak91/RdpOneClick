@@ -72,7 +72,7 @@ E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Deskto
 
 ## Tips
 # Getting Coordinates
-Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the secuirity pop up and the LHS of power shell are all cleanlt visible. Click txt pad first to type, hover over button, examine powershell without clicking anywhere and type.
+Use a pen or phone to note down the stairs coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
 ## Too many desktop icons
 Move original rdp files to a folder and use the tools Path Mode.
 ## Repetitive setup
@@ -80,5 +80,4 @@ Move original rdp files to a folder and use the tools Path Mode.
 - Use path mode
 - Have all rdps in the same directory
 - Fully setup one shortcut first and copy it multiple times
-- Edit only the rdp filename and if apptopriate any different clicks (some will likely remain the same).
-- 
+- Edit only the rdp filename and if appropriate any different clicks (some will likely remain the same).
