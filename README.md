@@ -69,3 +69,16 @@ E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Deskto
 - Officially you should be using signed rdp files
 - Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
 - Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
+
+## Tips
+# Getting Coordinates
+Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the secuirity pop up and the LHS of power shell are all cleanlt visible. Click txt pad first to type, hover over button, examine powershell without clicking anywhere and type.
+## Too many desktop icons
+Move original rdp files to a folder and use the tools Path Mode.
+## Repetitive setup
+- When editing target field use Ctrl A and copy off the small form field into a text editor and Ctrl A Del. Ctrl V to replace when finished adding coordinates 
+- Use path mode
+- Have all rdps in the same directory
+- Fully setup one shortcut first and copy it multiple times
+- Edit only the rdp filename and if apptopriate any different clicks (some will likely remain the same).
+- 
