@@ -60,7 +60,7 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 2.b If Using path mode, right click rdp file and choose "copy as path"
 4. Extract RdpAutoClickExe.7z to a suitable location.
 5. Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
-6. Edit desktop shortcut properties target field to include parameters: See Usage,
+6. Edit desktop shortcut properties target field to include parameters: See Usage, <br>
 E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561
 7. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
-8. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe 'Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe'
+8. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe <br>'Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe'
