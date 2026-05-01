@@ -64,3 +64,8 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561
 7. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
 8. Optionally change the shortcut icon of the shortcut to be rdp by using mstc.exe <br>'Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstc.exe'
+
+## Security notice
+- Officially you should be using signed rdp files
+- Microsoft support a cleaner admin only regsitey fix editing HKEY LOCAL MACHINE but have said it may be patched out
+- Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
