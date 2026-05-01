@@ -9,7 +9,8 @@ Automates clicking through the new RDP security prompt.
 Youtube    watch?v=VETpTN30J1Y
 
 ## C# Source Notes
-95% Visual Basic Human-developed, 100% C# LLM-(claude)-converted. 
+95% Visual Basic Human-developed, (assistance in stopping cmd pop ups) <br>
+100% C# LLM-Claude-converted. 
 - First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size, the source code was forwarded to Claude LLM asking for conversion to C#. 
 
 ## Modes
