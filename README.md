@@ -4,6 +4,9 @@
 
 Automates clicking through the new RDP security prompt.
 
+## In action
+
+Youtube    watch?v=VETpTN30J1Y
 
 ## C# Source Notes
 95% Visual Basic Human-developed, 100% C# LLM-(claude)-converted. 
