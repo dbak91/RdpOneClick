@@ -67,5 +67,5 @@ E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Deskto
 
 ## Security notice
 - Officially you should be using signed rdp files
-- Microsoft support a cleaner admin only regsitey fix editing HKEY LOCAL MACHINE but have said it may be patched out
+- Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
 - Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
