@@ -55,7 +55,7 @@ RdpAutoClick.exe click 800 500 1100 650 900 520
 ## Instructions
 
 1. Copy contents of 'powershell\_command.find\_pos.txt' into Powershell and press enter confirming any 'multi-line' warnings
-2. Keeping powershell visible, hover over the rdp file and note down the x and y values then open, similarly for any wanted pre-clicks such as clipboard as well as the final connect button position.
+2. Keeping powershell visible, hover over the rdp file and note down the x and y values then open, similarly for any wanted pre-clicks such as clipboard as well as the final connect button position.<br>
 2.b If Using path mode, right click rdp file and choose "copy as path"
 4. Extract RdpAutoClickExe.7z to a suitable location.
 5. Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
