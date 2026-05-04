@@ -20,17 +20,6 @@ Automates clicking through the new RDP security prompt.
 
 Youtube    watch?v=VETpTN30J1Y
 
-## C# Source Notes
-**V3.2/V3.0**  
-95% Visual Basic Human-developed, (assistance in stopping cmd pop ups) <br>
-100% C# LLM-Claude-converted. 
-- First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size, the source code was forwarded to Claude LLM asking for conversion to C#. 
-
-**V4.0**  
-No assistance in using Windows.Automation actual code.  
-A lot of Claude and GPT interaction to get the exe suitable and fast and still have Windows.Automation pulled into the project. (2-3hrs)  
-
-
 ## Version differences
 #### V4.0
 The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
@@ -139,3 +128,16 @@ Move original rdp files to a folder and use the tools Path Mode.
 - When editing target field use Ctrl A and copy off the small form field into a text editor and Ctrl A Del. Ctrl V to replace when finished adding coordinates 
 - Use path mode
 - Have all rdps in the same directory
+
+
+## C# Source Notes
+**V3.2/V3.0**  
+95% Visual Basic Human-developed, (assistance in stopping cmd pop ups) <br>
+100% C# LLM-Claude-converted. 
+- First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size, the source code was forwarded to Claude LLM asking for conversion to C#. 
+
+**V4.0**  
+No assistance in using Windows.Automation actual code.  
+A lot of Claude and GPT interaction to get the exe suitable and fast and still have Windows.Automation pulled into the project. (2-3hrs)  
+
+
