@@ -23,7 +23,19 @@ Youtube    watch?v=VETpTN30J1Y
 100% C# LLM-Claude-converted. 
 - First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size, the source code was forwarded to Claude LLM asking for conversion to C#. 
 
+## Version differences
+#### V4.0
+The first NET 4.8 dependant version and the first version to automate the clickingby button name. 
+Flaws:
+NET 4.8 must be installaled. (Already present on most moderrn systems)
 
+#### V3.0 / V3.2
+This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name 
+Note: 
+- These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.
+Flaws:
+- Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
+ 
 ## **Modes**
 
 #### Path mode (most reliable)  
@@ -80,7 +92,9 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 - Right click rdp file and choose 'Copy as path'
 
 **Finally add parameters**  
-- Download and unzip RdpAutoClick.exe to a suitable location-
+-  Download and unzip RdpAutoClick.exe to a suitable location
+-  If happy with the .exe's location, double-click or open the exe to set any warning triggers.
+  E.g) If Windows smartscreen 'protected' your pc and stopped the exe running, click 'More info' then 'Run anyway' to prevent this dialogue in the future.  
 -  Right click .exe and choose 'Send To...Desktop (create shortcut)' and name the shortcut after your rdp vm name
 -  Right click the shortcut on Desktop and click 'Properties'
 -  In the Traget field, add Rdp Path as the first parameter in quotes, and any desired checkbox names, without quotes if single word or with quotes if contains spaces.  
