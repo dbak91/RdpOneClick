@@ -68,7 +68,7 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 
 #### Path mode 
 
-**RdpAuoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" Clipboard Drives**
+**RdpAutoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" Clipboard Drives**
   
   
 This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
