@@ -6,7 +6,7 @@ Automates clicking through the new RDP security prompt.
 
 ## **Dependencies**
 
-- Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems
+- V4+ Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems
 
 ## Security notice
 - Officially you should be using signed rdp files
