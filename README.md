@@ -25,14 +25,14 @@ Youtube    watch?v=VETpTN30J1Y
 
 ## Version differences
 #### V4.0
-The first NET 4.8 dependant version and the first version to automate the clicking by button name. 
-Flaws:
+The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
+Flaws:  
 NET 4.8 must be installaled. (Already present on most moderrn systems)
 
 #### V3.0 / V3.2
-This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name 
-Note: 
-- These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.
+This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name   
+Note:  
+- These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.  
 Flaws:  
 - Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
 
