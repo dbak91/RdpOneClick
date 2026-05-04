@@ -21,12 +21,12 @@ Automates clicking through the new RDP security prompt.
 Youtube    watch?v=VETpTN30J1Y
 
 ## C# Source Notes
-**V3.2/V3.0**
+**V3.2/V3.0**  
 95% Visual Basic Human-developed, (assistance in stopping cmd pop ups) <br>
 100% C# LLM-Claude-converted. 
 - First developed and ironed out behaviour in Visual Basic, then after realising dependencies and file size, the source code was forwarded to Claude LLM asking for conversion to C#. 
 
-**V4.0**
+**V4.0**  
 No assistance in using Windows.Automation actual code.  
 A lot of Claude and GPT interaction to get the exe suitable and fast and still have Windows.Automation pulled into the project. (2-3hrs)  
 
