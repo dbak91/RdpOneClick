@@ -5,176 +5,128 @@ using System.Threading;
 
 class RdpAutoClick
 {
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern void SetCursorPos(int X, int Y);
+    [DllImport("user32.dll")]
+    static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
     [DllImport("user32.dll")]
-    private static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, uint dwExtraInfo);
+    static extern IntPtr FindWindowEx(IntPtr parent, IntPtr childAfter, string className, string windowText);
 
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern IntPtr FindWindow(string? lpClassName, string lpWindowName);
+    [DllImport("user32.dll")]
+    static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    private static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
+    [DllImport("user32.dll")]
+    static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
 
-    private const uint MOUSEEVENTF_LEFTDOWN = 0x2;
-    private const uint MOUSEEVENTF_LEFTUP = 0x4;
-    private const uint MB_OK = 0;
-    private const uint MB_ICONERROR = 0x10;
+    const int BM_CLICK = 0x00F5;
+    const uint MB_OK = 0x00000000;
+    const uint MB_ICONERROR = 0x00000010;
 
-    static bool WaitForWindow(string title, int timeoutMs)
+    static string WINDOW_TITLE = "Remote Desktop Connection";
+    static string CONNECT_BUTTON = "Connect";
+
+    static void Error(string msg)
+    {
+        MessageBox(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | MB_ICONERROR);
+    }
+
+    static void Info(string msg)
+    {
+        MessageBox(IntPtr.Zero, msg, "RDP AutoClick", MB_OK);
+    }
+
+    static void LaunchRdp(string path)
+    {
+        try
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "mstsc.exe",
+                Arguments = "\"" + path + "\"",
+                UseShellExecute = true
+            });
+        }
+        catch (Exception ex)
+        {
+            Error("Failed to start RDP: " + ex.Message);
+        }
+    }
+
+    static IntPtr WaitForWindow(int timeoutMs)
     {
         int elapsed = 0;
-        int interval = 100;
 
         while (elapsed < timeoutMs)
         {
-            IntPtr hWnd = FindWindow(null, title);
+            IntPtr hWnd = FindWindow(null, WINDOW_TITLE);
             if (hWnd != IntPtr.Zero)
-                return true;
+            {
+                Thread.Sleep(500);
+                return hWnd;
+            }
 
-            Thread.Sleep(interval);
-            elapsed += interval;
+            Thread.Sleep(200);
+            elapsed += 200;
         }
-        return false;
+
+        return IntPtr.Zero;
     }
 
-    static void ClickAt(int x, int y)
+    static IntPtr FindChild(IntPtr parent, string text)
     {
-        SetCursorPos(x, y);
-        Thread.Sleep(50);
-        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        return FindWindowEx(parent, IntPtr.Zero, null, text);
     }
 
-    static void ShowUsage()
+    static bool Click(IntPtr parent, string name)
     {
-        MessageBox(IntPtr.Zero,
-            "Usage:" + Environment.NewLine +
-            "Click mode:" + Environment.NewLine +
-            "  RdpAutoClick.exe click <rdpX> <rdpY> <connectX> <connectY> [preX preY]..." + Environment.NewLine +
-            "Path mode:" + Environment.NewLine +
-            "  RdpAutoClick.exe <rdpPath> <connectX> <connectY> [preX preY]...",
-            "RDP AutoClick",
-            MB_OK | MB_ICONERROR);
+        IntPtr el = FindChild(parent, name);
+
+        if (el == IntPtr.Zero)
+            return false;
+
+        SendMessage(el, BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+        return true;
     }
 
-    [STAThread]
     static void Main(string[] args)
     {
-        if (args.Length == 0)
+        if (args.Length < 1)
         {
-            ShowUsage();
+            Error("Missing RDP file path.");
             return;
         }
 
-        int connectX = 0;
-        int connectY = 0;
-        int startIndex = 0;
+        string rdpPath = args[0];
 
-        // ===============================
-        // CLICK MODE
-        // ===============================
-        if (args[0].ToLower() == "click")
+        // 1. launch RDP
+        LaunchRdp(rdpPath);
+
+        // 2. wait for window
+        IntPtr window = WaitForWindow(10000);
+
+        if (window == IntPtr.Zero)
         {
-            if (args.Length < 5)
+            Error("RDP window not found.");
+            return;
+        }
+
+        // 3. optional checkbox clicks (ONLY args after index 0)
+        for (int i = 1; i < args.Length; i++)
+        {
+            if (!Click(window, args[i]))
             {
-                ShowUsage();
-                return;
+                Error("Checkbox not found: " + args[i]);
             }
 
-            if (!int.TryParse(args[1], out int rdpX) || !int.TryParse(args[2], out int rdpY))
-            {
-                MessageBox(IntPtr.Zero, "Invalid RDP click coordinates.", "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            if (!int.TryParse(args[3], out connectX) || !int.TryParse(args[4], out connectY))
-            {
-                MessageBox(IntPtr.Zero, "Invalid connect coordinates.", "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            // Double-click the .rdp file
-            ClickAt(rdpX, rdpY);
             Thread.Sleep(100);
-            ClickAt(rdpX, rdpY);
-
-            if (!WaitForWindow("Remote Desktop Connection security warning", 5000))
-            {
-                MessageBox(IntPtr.Zero, "RDP window did not appear.", "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            startIndex = 5;
         }
-        else
+
+        // 4. final connect click
+        if (!Click(window, CONNECT_BUTTON))
         {
-            // ===============================
-            // PATH MODE
-            // ===============================
-            if (args.Length < 3)
-            {
-                ShowUsage();
-                return;
-            }
-
-            string rdpPath = args[0];
-
-            if (!int.TryParse(args[1], out connectX) || !int.TryParse(args[2], out connectY))
-            {
-                MessageBox(IntPtr.Zero, "Invalid connect coordinates.", "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            try
-            {
-                ProcessStartInfo psi = new ProcessStartInfo
-                {
-                    FileName = "mstsc.exe",
-                    Arguments = "\"" + rdpPath + "\"",
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                Process.Start(psi);
-            }
-            catch (Exception ex)
-            {
-                MessageBox(IntPtr.Zero, "Failed to start mstsc: " + ex.Message, "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            if (!WaitForWindow("Remote Desktop Connection security warning", 5000))
-            {
-                MessageBox(IntPtr.Zero, "RDP window did not appear.", "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            startIndex = 3;
+            Error("Connect button not found.");
+            return;
         }
 
-        // ===============================
-        // OPTIONAL PRE-CLICKS
-        // ===============================
-        int i = startIndex;
-        while (i + 1 < args.Length)
-        {
-            if (!int.TryParse(args[i], out int preX) || !int.TryParse(args[i + 1], out int preY))
-            {
-                MessageBox(IntPtr.Zero, "Invalid pre-click coordinates at position " + i, "RDP AutoClick", MB_OK | MB_ICONERROR);
-                return;
-            }
-
-            ClickAt(preX, preY);
-            Thread.Sleep(100);
-
-            i += 2;
-        }
-
-        // ===============================
-        // FINAL CONNECT CLICK
-        // ===============================
-        ClickAt(connectX, connectY);
+        Info("RDP launched successfully.");
     }
 }
