@@ -69,7 +69,7 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 3. Close rdp (and any getnames function) after noting down names
 
 **Rdp path**  
-4. Right click rdp file and choose 'Copy as path'
+	4. Right click rdp file and choose 'Copy as path'
 
 **Finally add parameters**  
 5. Download and unzip RdpAutoClick.exe to a suitable location
