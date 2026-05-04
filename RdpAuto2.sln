@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdpAutoClick", "RdpCSharp\RdpAutoClick.csproj", "{617FE4D5-01D5-4A93-B726-A1E3F38DC462}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdpAutoClickNew", "ConsoleApp3\RdpAutoClickNew.csproj", "{203D0AF5-0A1A-4C06-9578-E821958DCEE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{617FE4D5-01D5-4A93-B726-A1E3F38DC462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{617FE4D5-01D5-4A93-B726-A1E3F38DC462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{617FE4D5-01D5-4A93-B726-A1E3F38DC462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203D0AF5-0A1A-4C06-9578-E821958DCEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203D0AF5-0A1A-4C06-9578-E821958DCEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203D0AF5-0A1A-4C06-9578-E821958DCEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203D0AF5-0A1A-4C06-9578-E821958DCEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
