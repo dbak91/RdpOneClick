@@ -4,6 +4,10 @@
 
 Automates clicking through the new RDP security prompt.   
 
+## **Dependencies**
+
+- Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems
+
 ## Security notice
 - Officially you should be using signed rdp files
 - Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
@@ -54,9 +58,7 @@ This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
 This will double click at '800 500' to open the rdp, then click at '900 520' preclick then finally the connect button at '1100 650'
 
 
-## **Dependencies**
 
-- Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems  
 
 
 ## **Tip**:
