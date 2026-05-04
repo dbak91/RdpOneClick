@@ -25,7 +25,7 @@ Youtube    watch?v=VETpTN30J1Y
 
 ## Version differences
 #### V4.0
-The first NET 4.8 dependant version and the first version to automate the clickingby button name. 
+The first NET 4.8 dependant version and the first version to automate the clicking by button name. 
 Flaws:
 NET 4.8 must be installaled. (Already present on most moderrn systems)
 
