@@ -79,7 +79,7 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 
 **Finally add parameters**  
 - Download and unzip RdpAutoClick.exe to a suitable location-
--  Right click .exe and choose 'Send To...Desktop (create shortcut)'
+-  Right click .exe and choose 'Send To...Desktop (create shortcut)' and name the shortcut after your rdp vm name
 -  Right click the shortcut on Desktop and click 'Properties'
 -  In the Traget field, add Rdp Path as the first parameter in quotes, and any desired checkbox names, without quotes if single word or with quotes if contains spaces.  
 e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Drives (This will pre click Clipboard and Drives)
