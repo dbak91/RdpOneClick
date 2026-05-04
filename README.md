@@ -33,9 +33,13 @@ NET 4.8 must be installaled. (Already present on most moderrn systems)
 This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name 
 Note: 
 - These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.
-Flaws:
+Flaws:  
 - Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
- 
+
+#### V2.0
+This is the last self contained visual basic version.
+Flaws:  
+- Large file size and slow to start until cached.
 ## **Modes**
 
 #### Path mode (most reliable)  
