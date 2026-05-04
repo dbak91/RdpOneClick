@@ -105,11 +105,11 @@ E.g.) Target:# RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 6
 
 
 ## Tips
-# Getting Coordinates
+#### Getting Coordinates
 Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
-## Too many desktop icons
+#### Too many desktop icons
 Move original rdp files to a folder and use the tools Path Mode.
-## Repetitive setup
+#### Repetitive setup
 - When editing target field use Ctrl A and copy off the small form field into a text editor and Ctrl A Del. Ctrl V to replace when finished adding coordinates 
 - Use path mode
 - Have all rdps in the same directory
