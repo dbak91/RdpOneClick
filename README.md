@@ -27,7 +27,7 @@ Youtube    watch?v=VETpTN30J1Y
 #### V4.0
 The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
 Flaws:  
-NET 4.8 must be installaled. (Already present on most moderrn systems)
+- NET 4.8 must be installaled. (Already present on most moderrn systems)
 
 #### V3.0 / V3.2
 This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name   
