@@ -1,132 +1,152 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Threading;
+using System.Windows.Automation;
+using System.Runtime.InteropServices;
 
-class RdpAutoClick
+class Program
 {
-    [DllImport("user32.dll")]
-    static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-    [DllImport("user32.dll")]
-    static extern IntPtr FindWindowEx(IntPtr parent, IntPtr childAfter, string className, string windowText);
-
-    [DllImport("user32.dll")]
-    static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
-
-    [DllImport("user32.dll")]
-    static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
-
-    const int BM_CLICK = 0x00F5;
-    const uint MB_OK = 0x00000000;
-    const uint MB_ICONERROR = 0x00000010;
-
-    static string WINDOW_TITLE = "Remote Desktop Connection";
-    static string CONNECT_BUTTON = "Connect";
-
-    static void Error(string msg)
-    {
-        MessageBox(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | MB_ICONERROR);
-    }
-
-    static void Info(string msg)
-    {
-        MessageBox(IntPtr.Zero, msg, "RDP AutoClick", MB_OK);
-    }
-
-    static void LaunchRdp(string path)
-    {
-        try
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = "mstsc.exe",
-                Arguments = "\"" + path + "\"",
-                UseShellExecute = true
-            });
-        }
-        catch (Exception ex)
-        {
-            Error("Failed to start RDP: " + ex.Message);
-        }
-    }
-
-    static IntPtr WaitForWindow(int timeoutMs)
-    {
-        int elapsed = 0;
-
-        while (elapsed < timeoutMs)
-        {
-            IntPtr hWnd = FindWindow(null, WINDOW_TITLE);
-            if (hWnd != IntPtr.Zero)
-            {
-                Thread.Sleep(500);
-                return hWnd;
-            }
-
-            Thread.Sleep(200);
-            elapsed += 200;
-        }
-
-        return IntPtr.Zero;
-    }
-
-    static IntPtr FindChild(IntPtr parent, string text)
-    {
-        return FindWindowEx(parent, IntPtr.Zero, null, text);
-    }
-
-    static bool Click(IntPtr parent, string name)
-    {
-        IntPtr el = FindChild(parent, name);
-
-        if (el == IntPtr.Zero)
-            return false;
-
-        SendMessage(el, BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-        return true;
-    }
-
     static void Main(string[] args)
     {
         if (args.Length < 1)
         {
-            Error("Missing RDP file path.");
+            Message("Missing RDP path");
             return;
         }
 
-        string rdpPath = args[0];
+        LaunchRdp(args[0]);
 
-        // 1. launch RDP
-        LaunchRdp(rdpPath);
+        var window = WaitForWindow("Remote Desktop Connection security warning", 15000);
 
-        // 2. wait for window
-        IntPtr window = WaitForWindow(10000);
-
-        if (window == IntPtr.Zero)
+        if (window == null)
         {
-            Error("RDP window not found.");
+            Message("RDP window not found");
             return;
         }
 
-        // 3. optional checkbox clicks (ONLY args after index 0)
+        window.SetFocus();
+        Thread.Sleep(300);
+
         for (int i = 1; i < args.Length; i++)
         {
-            if (!Click(window, args[i]))
+            ToggleCheckboxByName(window, args[i]);
+        }
+
+        if (!ClickByName(window, "Connect"))
+        {
+            Message("Failed to click Connect button");
+        }
+    }
+
+    static void LaunchRdp(string path)
+    {
+        Process.Start("mstsc.exe", "\"" + path + "\"");
+    }
+
+    static AutomationElement WaitForWindow(string title, int timeout)
+    {
+        int t = 0;
+
+        while (t < timeout)
+        {
+            var root = AutomationElement.RootElement;
+
+            var win = root.FindFirst(
+                TreeScope.Children,
+                new PropertyCondition(AutomationElement.NameProperty, title));
+
+            if (win != null)
+                return win;
+
+            Thread.Sleep(200);
+            t += 200;
+        }
+
+        return null;
+    }
+
+    static bool ToggleCheckboxByName(AutomationElement parent, string name)
+    {
+        try
+        {
+            var el = parent.FindFirst(
+                TreeScope.Descendants,
+                new PropertyCondition(AutomationElement.NameProperty, name));
+
+            if (el == null)
             {
-                Error("Checkbox not found: " + args[i]);
+                Message("Checkbox not found: '" + name + "'");
+                return false;
             }
 
-            Thread.Sleep(100);
-        }
+            if (el.Current.ControlType != ControlType.CheckBox)
+            {
+                Message("Not a checkbox: '" + name + "'");
+                return false;
+            }
 
-        // 4. final connect click
-        if (!Click(window, CONNECT_BUTTON))
+            object patternObj;
+
+            try
+            {
+                patternObj = el.GetCurrentPattern(TogglePattern.Pattern);
+                ((TogglePattern)patternObj).Toggle();
+                return true;
+            }
+            catch
+            {
+                Message("Checkbox not interactable: '" + name + "'");
+                return false;
+            }
+        }
+        catch (Exception ex)
         {
-            Error("Connect button not found.");
-            return;
+            Message("Error toggling '" + name + "': " + ex.Message);
+            return false;
         }
+    }
 
-        Info("RDP launched successfully.");
+    static bool ClickByName(AutomationElement parent, string name)
+    {
+        try
+        {
+            var el = parent.FindFirst(
+                TreeScope.Descendants,
+                new PropertyCondition(AutomationElement.NameProperty, name));
+
+            if (el == null)
+            {
+                Message("Button not found: '" + name + "'");
+                return false;
+            }
+
+            try
+            {
+                object patternObj = el.GetCurrentPattern(InvokePattern.Pattern);
+                ((InvokePattern)patternObj).Invoke();
+                return true;
+            }
+            catch
+            {
+                Message("Button not clickable: '" + name + "'");
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            Message("Error clicking '" + name + "': " + ex.Message);
+            return false;
+        }
+    }
+
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    private static extern int MessageBoxW(IntPtr hWnd, string text, string caption, uint type);
+
+    private const uint MB_OK = 0;
+    private const uint MB_ICONERROR = 0x10;
+
+    public static void Message(string msg)
+    {
+        MessageBoxW(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | MB_ICONERROR);
     }
 }
