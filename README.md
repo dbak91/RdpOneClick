@@ -64,20 +64,20 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 ---
 
 **Names of checkboxes**: 
-1. Open the rdp file to force the prompt and inspect and note down the checkbox names you want to pre click. (Case sensitive)
-2. If names are non-simple (e.g. more than one word or with qualifiers) run GetNamesOfButtons.exe to examine the  exact name of the checkboxes you want. 
-3. Close rdp (and any getnames function) after noting down names
+- Open the rdp file to force the prompt and inspect and note down the checkbox names you want to pre click. (Case sensitive)
+- If names are non-simple (e.g. more than one word or with qualifiers) run GetNamesOfButtons.exe to examine the  exact name of the checkboxes you want. 
+- Close rdp (and any getnames function) after noting down names
 
 **Rdp path**  
-	4. Right click rdp file and choose 'Copy as path'
+- Right click rdp file and choose 'Copy as path'
 
 **Finally add parameters**  
-5. Download and unzip RdpAutoClick.exe to a suitable location
-6. Right click .exe and choose 'Send To...Desktop (create shortcut)'
-7  Right click the shortcut on Desktop and click 'Properties'
-8. Add Rdp Path as the first parameter in quotes, and any desired checkbox names, without quotes if single word or with quotes if contains spaces, to the properties 'Target' field.  
+- Download and unzip RdpAutoClick.exe to a suitable location-
+-  Right click .exe and choose 'Send To...Desktop (create shortcut)'
+-  Right click the shortcut on Desktop and click 'Properties'
+- Add Rdp Path as the first parameter in quotes, and any desired checkbox names, without quotes if single word or with quotes if contains spaces, to the properties 'Target' field.  
 e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Drives (This will pre click Clipboard and Drives)
-9. Save and test. 
+- Save and test. 
   
     
 	
