@@ -86,7 +86,7 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 
 ## **Instructions**
 
-#### Path mode
+#### Path mode V4.0+
 ---
 
 **Names of checkboxes**: 
@@ -109,7 +109,7 @@ e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Driv
   
     
 	
-#### Click mode
+#### Click mode V3.2- or ealier
 ---
   	
 **Get X and Y coordinates**
@@ -126,7 +126,7 @@ E.g.) Target:# RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 6
 
 ## Tips
 #### Getting Coordinates
-Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
+Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere else and type.
 #### Too many desktop icons
 Move original rdp files to a folder and use the tools Path Mode.
 #### Repetitive setup
