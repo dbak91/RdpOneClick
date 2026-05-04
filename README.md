@@ -37,7 +37,7 @@ Flaws:
 - Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
 
 #### V2.0
-This is the last self contained visual basic version.
+This is the last self contained visual basic version.  
 Flaws:  
 - Large file size and slow to start until cached.
 ## **Modes**
