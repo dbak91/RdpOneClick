@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Windows.Automation;
 using System.Runtime.InteropServices;
@@ -16,7 +15,7 @@ class Program
 
         LaunchRdp(args[0]);
 
-        var window = WaitForWindow("Remote Desktop Connection security warning", 15000);
+        AutomationElement window = WaitForWindow("Remote Desktop Connection security warning", 15000);
 
         if (window == null)
         {
@@ -24,8 +23,8 @@ class Program
             return;
         }
 
-        window.SetFocus();
-        Thread.Sleep(300);
+        //window.SetFocus();
+        //Thread.Sleep(300);
 
         for (int i = 1; i < args.Length; i++)
         {
@@ -34,32 +33,37 @@ class Program
 
         if (!ClickByName(window, "Connect"))
         {
-            Message("Failed to click Connect button");//
+            Message("Failed to click Connect button");
         }
     }
 
+    // Replace Process.Start with ShellExecute
     static void LaunchRdp(string path)
     {
-        Process.Start("mstsc.exe", "\"" + path + "\"");
+        ShellExecute(IntPtr.Zero, "open", "mstsc.exe", "\"" + path + "\"", null, 1);
     }
 
     static AutomationElement WaitForWindow(string title, int timeout)
     {
-        int t = 0;
+        int elapsed = 0;
 
-        while (t < timeout)
+        while (elapsed < timeout)
         {
-            var root = AutomationElement.RootElement;
+            AutomationElement root = AutomationElement.RootElement;
 
-            var win = root.FindFirst(
+            AutomationElement win = root.FindFirst(
                 TreeScope.Children,
                 new PropertyCondition(AutomationElement.NameProperty, title));
 
             if (win != null)
+            {
+
+                Thread.Sleep(150);
                 return win;
+            }
 
             Thread.Sleep(200);
-            t += 200;
+            elapsed += 200;
         }
 
         return null;
@@ -69,7 +73,7 @@ class Program
     {
         try
         {
-            var el = parent.FindFirst(
+            AutomationElement el = parent.FindFirst(
                 TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.NameProperty, name));
 
@@ -81,16 +85,14 @@ class Program
 
             if (el.Current.ControlType != ControlType.CheckBox)
             {
-                Message("Not a checkbox: '" + name + "'");
+                Message("Not a checkbox: '" + name + "'");//
                 return false;
             }
 
-            object patternObj;
-
             try
             {
-                patternObj = el.GetCurrentPattern(TogglePattern.Pattern);
-                ((TogglePattern)patternObj).Toggle();
+                object pattern = el.GetCurrentPattern(TogglePattern.Pattern);
+                ((TogglePattern)pattern).Toggle();
                 return true;
             }
             catch
@@ -110,7 +112,7 @@ class Program
     {
         try
         {
-            var el = parent.FindFirst(
+            AutomationElement el = parent.FindFirst(
                 TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.NameProperty, name));
 
@@ -122,8 +124,8 @@ class Program
 
             try
             {
-                object patternObj = el.GetCurrentPattern(InvokePattern.Pattern);
-                ((InvokePattern)patternObj).Invoke();
+                object pattern = el.GetCurrentPattern(InvokePattern.Pattern);
+                ((InvokePattern)pattern).Invoke();
                 return true;
             }
             catch
@@ -139,13 +141,24 @@ class Program
         }
     }
 
+    // Win32: launch process
+    [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
+    private static extern IntPtr ShellExecute(
+        IntPtr hwnd,
+        string lpOperation,
+        string lpFile,
+        string lpParameters,
+        string lpDirectory,
+        int nShowCmd);
+
+    // Win32: message box
     [DllImport("user32.dll", CharSet = CharSet.Unicode)]
     private static extern int MessageBoxW(IntPtr hWnd, string text, string caption, uint type);
 
     private const uint MB_OK = 0;
     private const uint MB_ICONERROR = 0x10;
 
-    public static void Message(string msg)
+    static void Message(string msg)
     {
         MessageBoxW(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | MB_ICONERROR);
     }
