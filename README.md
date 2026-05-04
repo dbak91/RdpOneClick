@@ -1,8 +1,6 @@
 # **RDP Auto Click Tool**
 
 ## **Overview**
-.-----------------.
-
 
 Automates clicking through the new RDP security prompt.   
 
@@ -17,7 +15,6 @@ Youtube    watch?v=VETpTN30J1Y
 
 
 ## **Modes**
-.----------.  
 
 #### Path mode (most reliable)  
 
@@ -33,11 +30,10 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 
 
 ## **Example**
-.-------------. 
 
 
 #### Path mode 
----
+
 **RdpAuoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" Clipboard Drives**
   
   
@@ -45,7 +41,7 @@ This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
 
 
 #### Click Mode:
----  
+
 **RdpAutoClick.exe click 800 500 1100 650 900 520**
   
   
@@ -53,19 +49,17 @@ This will double click at '800 500' to open the rdp, then click at '900 520' pre
 
 
 ## **Dependencies**
-.------------------------.    
 
 - Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems  
 
 
 ## **Tip**:
-.-----.
 
 Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Properties - Change Icon - Browse - C:\\Windows\\System32\\mstsc.exe  
 
 
 ## **Instructions**
-.-----------------------.  
+
 #### Path mode
 ---
 
@@ -101,7 +95,22 @@ e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Driv
 E.g.) Target:# RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561 (This expects the rdp at 1104 659 and the connect button at 768 561 with no pre clicks defined
 
 
+## Security notice
+- Officially you should be using signed rdp files
+- Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
+- Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
 
+## Tips
+# Getting Coordinates
+Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
+## Too many desktop icons
+Move original rdp files to a folder and use the tools Path Mode.
+## Repetitive setup
+- When editing target field use Ctrl A and copy off the small form field into a text editor and Ctrl A Del. Ctrl V to replace when finished adding coordinates 
+- Use path mode
+- Have all rdps in the same directory
+
+  
 # RDP Auto Click Tool
 
 ## Overview
@@ -160,19 +169,6 @@ E.g.) Target: # C:\\Users\\BAKERDA\\RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Deskto
 7. Copy the shortcut for as many rdp files as you have, editing the coordinate parameters in each.
 8. Optionally change the shortcut icon of the shortcut to be rdp by using mstsc.exe <br>'Right click - Properties - Icon - Browse - C:\\Windows\\System32\\mstsc.exe'
 
-## Security notice
-- Officially you should be using signed rdp files
-- Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
-- Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
 
-## Tips
-# Getting Coordinates
-Use a pen or phone to note down the coordinates while hovering windows cursor over the buttons. If prefer windows a tip is to have it so a .txt pad, the security pop up and the LHS of Powershell are all cleanly visible. Click txt pad first to type, hover over button, examine Powershell without clicking anywhere and type.
-## Too many desktop icons
-Move original rdp files to a folder and use the tools Path Mode.
-## Repetitive setup
-- When editing target field use Ctrl A and copy off the small form field into a text editor and Ctrl A Del. Ctrl V to replace when finished adding coordinates 
-- Use path mode
-- Have all rdps in the same directory
 - Fully setup one shortcut first and copy it multiple times
 - Edit only the rdp filename and if appropriate any different clicks (some will likely remain the same).
