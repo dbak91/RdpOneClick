@@ -68,10 +68,10 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 2. If names are non-simple (e.g. more than one word or with qualifiers) run GetNamesOfButtons.exe to examine the  exact name of the checkboxes you want. 
 3. Close rdp (and any getnames function) after noting down names
 
-**Rdp path**
+**Rdp path**  
 4. Right click rdp file and choose 'Copy as path'
 
-**Finally add parameters**
+**Finally add parameters**  
 5. Download and unzip RdpAutoClick.exe to a suitable location
 6. Right click .exe and choose 'Send To...Desktop (create shortcut)'
 7  Right click the shortcut on Desktop and click 'Properties'
