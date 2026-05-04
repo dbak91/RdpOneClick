@@ -7,6 +7,8 @@ Automates clicking through the new RDP security prompt.
 ## **Dependencies**
 
 - V4+ Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems
+- Enter Powershell command to test compatability:
+  ```$r=(Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full' -ErrorAction SilentlyContinue).Release; if(-not $r){"NET Framework 4.x not detected"} elseif($r -ge 533320){"NET Framework 4.8.1 or later installed"} elseif($r -ge 528040){"NET Framework 4.8 installed"} elseif($r -ge 461808){"NET Framework 4.7.2 installed"} else{"Older NET Framework 4.x version installed"}```
 
 ## Security notice
 - Officially you should be using signed rdp files
