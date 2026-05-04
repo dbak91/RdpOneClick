@@ -4,6 +4,12 @@
 
 Automates clicking through the new RDP security prompt.   
 
+## Security notice
+- Officially you should be using signed rdp files
+- Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
+- Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed. (tbd)
+
+
 ## In action
 
 Youtube    watch?v=VETpTN30J1Y
@@ -85,20 +91,16 @@ e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Driv
 ---
   	
 **Get X and Y coordinates**
-1. Copy contents of 'powershell\_command.find\_pos.txt' into Powershell and press enter confirming any 'multi-line' warnings
-2. Keeping powershell visible, hover over the rdp file and note down the x and y values then open to force the prompt, similarly for any wanted pre-clicks such as clipboard as well as the final connect button position note down the x and y values.
+- Copy contents of 'powershell\_command.find\_pos.txt' into Powershell and press enter confirming any 'multi-line' warnings
+-  Keeping powershell visible, hover over the rdp file and note down the x and y values then open to force the prompt, similarly for any wanted pre-clicks such as clipboard as well as the final connect button position note down the x and y values.
 
 **Add parameters**
-3. Extract RdpAutoClick.exe to a suitable loacation
-4. Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
-5. Edit desktop shortcut properties Target field to include parameters: See Usage,
+- Extract RdpAutoClick.exe to a suitable loacation
+-  Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
+- Edit desktop shortcut properties Target field to include parameters: See Usage,
 E.g.) Target:# RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561 (This expects the rdp at 1104 659 and the connect button at 768 561 with no pre clicks defined
 
 
-## Security notice
-- Officially you should be using signed rdp files
-- Microsoft support a cleaner admin only registry fix editing HKEY LOCAL MACHINE but have said it may be patched out
-- Since this is a security pop up it is clicking it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed.
 
 ## Tips
 # Getting Coordinates
