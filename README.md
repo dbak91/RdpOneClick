@@ -39,17 +39,27 @@ Flaws:
 - Large file size and slow to start until cached.
 ## **Modes**
 
-#### Path mode (most reliable)  
+#### Path mode (V4.0+)  
 
 
-RdpAutoClick.exe "C:\\file.rdp" \[optional checkbox option names]
+RdpAutoClick.exe "C:\\file.rdp" \[optional checkbox option names or Ids]
+
+#### Options (V4.0+)
+
+RdpAutoClick.exe -usage  
+This will show the paramater usage
+
+RdpAutoClick.exe "C:\\file.rdp" -showIds  
+This will display all available checkbox names and ids as stored in Windows automation. 
+
+RdpAutoClick.exe "C:\\file.rdp" -all  
+This will prselect every available checkbox
 
 
-#### Click mode  
+#### Click mode  (V3.2 or earlier)
 
 
 RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre click x and ys]
-
 
 
 ## **Example**
@@ -69,7 +79,6 @@ This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
   
   
 This will double click at '800 500' to open the rdp, then click at '900 520' preclick then finally the connect button at '1100 650'
-
 
 
 
