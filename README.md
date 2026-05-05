@@ -53,7 +53,7 @@ RdpAutoClick.exe "C:\\file.rdp" -showIds
 This will display all available checkbox names and ids as stored in Windows automation. 
 
 RdpAutoClick.exe "C:\\file.rdp" -all  
-This will prselect every available checkbox
+This will select every available checkbox
 
 
 #### Click mode  (V3.2 or earlier)
