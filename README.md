@@ -2,8 +2,8 @@
 
 ## **Overview**
 
-Automates clicking through the new RDP security prompt to revert to the old '
-doible-click-and-type UX.
+Automates clicking through the new RDP security prompt to revert to the old 
+double-click-and-type UX.
 
 ## **Dependencies**
 
