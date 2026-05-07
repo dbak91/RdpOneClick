@@ -95,20 +95,20 @@ Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Proper
 ---
 
 **Names of checkboxes**: 
-- Open the rdp file to force the prompt and inspect and note down the checkbox names you want to pre click. (Case sensitive)
-- If names are non-simple (e.g. more than one word or with qualifiers) run GetNamesOfButtons.exe to examine the  exact name of the checkboxes you want. 
-- Close rdp (and any getnames function) after noting down names
+- Open the desired rdp file to force the security prompt and inspect and note down the checkbox names you want to pre click. (Case sensitive)
+- If names are non-simple (e.g. more than one word or with qualifiers) run with "-showIds" (see Usage) to get exact names or automation ids
+- Close rdp after noting down names/ids
 
 **Rdp path**  
 - Right click rdp file and choose 'Copy as path'
 
 **Finally add parameters**  
 -  Download and unzip RdpAutoClick.exe to a suitable location
--  If happy with the .exe's location, double-click or open the exe to set any warning triggers.
+-  If happy with the .exe's location, double-click or open the exe to pre-set any warning triggers.
   E.g) If Windows smartscreen 'protected' your pc and stopped the exe running, click 'More info' then 'Run anyway' to prevent this dialogue in the future.  
--  Right click .exe and choose 'Send To...Desktop (create shortcut)' and name the shortcut after your rdp vm name
--  Right click the shortcut on Desktop and click 'Properties'
--  In the Traget field, add Rdp Path as the first parameter in quotes, and any desired checkbox names, without quotes if single word or with quotes if contains spaces.  
+-  Add exe shortcut. Right click .exe and choose 'Send To...Desktop (create shortcut)' and rename the shortcut after your rdp vm name
+-  Add paramaters: Right click the shortcut on Desktop and click 'Properties'
+-  In the Traget field, add Rdp Path as the first parameter in quotes after the exe path, and any desired checkbox names, without quotes if single word or with quotes if contains spaces.  
 e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Drives (This will pre click Clipboard and Drives)
 - Save and test. 
   
