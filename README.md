@@ -5,6 +5,16 @@
 Automates clicking through the new RDP security prompt to revert to the old 
 double-click-and-type UX.
 
+## **Example**
+
+
+#### Path mode 
+
+**RdpAutoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" Clipboard Drives**
+  
+  
+This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
+
 ## **Dependencies**
 
 - V4+ Requires .NET 4.8 framework which is usually present on most Windows 10 and 11 systems
@@ -66,7 +76,7 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 ## **Example**
 
 
-#### Path mode 
+#### Path mode (V4.0 or later)
 
 **RdpAutoClick.exe "C:USERS\\BAKERDA\\Desktop\\Win10.rdp" Clipboard Drives**
   
@@ -74,7 +84,7 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
 
 
-#### Click Mode:
+#### Click Mode (V3.2 pr earlier):
 
 **RdpAutoClick.exe click 800 500 1100 650 900 520**
   
