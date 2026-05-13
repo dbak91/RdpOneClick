@@ -107,7 +107,8 @@ namespace RdpShortcutCreator
 
             // OPTIONS
             labelOpts = new Label();
-            labelOpts.Text = "Options:";
+            labelOpts.Text = "Options To Remember:";
+            labelOpts.Size = new System.Drawing.Size(300,23);
             labelOpts.Location = new System.Drawing.Point(20, 200);
             this.Controls.Add(labelOpts);
 
@@ -115,7 +116,7 @@ namespace RdpShortcutCreator
             checkedList.Enabled = false;
             checkedList.Location = new System.Drawing.Point(20, 225);
             checkedList.Size = new System.Drawing.Size(400, 23);
-            checkedList.Items.Add("-all");
+            checkedList.Items.Add(allItem);
             checkedList.ItemCheck += CheckedList_ItemCheck;
             checkedList.Click += CheckedList_Click;
 
@@ -145,20 +146,37 @@ namespace RdpShortcutCreator
             buttonCreate.Click += ButtonCreate_Click;
             this.Controls.Add(buttonCreate);
 
-            //// STATUS
-            //statusLabel = new Label();
-            //statusLabel.Text = "Ready...";
-            //statusLabel.Location = new System.Drawing.Point(160, 360);
-            //statusLabel.Size = new System.Drawing.Size(400, 35);
-            //this.Controls.Add(statusLabel);
+            // STATUS
+            statusLabel = new Label();
+            statusLabel.Text = "Please configure...";
+            statusLabel.Location = new System.Drawing.Point(200, 365);
+            statusLabel.Size = new System.Drawing.Size(400, 35);
+            this.Controls.Add(statusLabel);
         }
 
+        private bool IsReady()
+        {
+            return desktopSet && exeSet && rdpSet;
+        }
         private void ButtonBrowseDesktop_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     textBoxDesktop.Text = dialog.SelectedPath;
+                    desktopSet = true;
+                    if (IsReady())
+                        statusLabel.Text = "Ready.";
+                    else
+                        statusLabel.Text = "Please configure...";
+                }
+                else
+                {
+                    desktopSet = false;
+                    
+                }
+
             }
         }
 
@@ -169,10 +187,22 @@ namespace RdpShortcutCreator
                 dialog.Filter = "EXE Files|*.exe";
 
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     textBoxExe.Text = dialog.FileName;
+                    exeSet = true;
+                    if (IsReady())
+                        statusLabel.Text = "Ready.";
+                    else
+                        statusLabel.Text = "Please configure...";
+
+                }
+                else
+                    exeSet = false;
             }
         }
-
+        private static bool rdpSet =false;
+        private static bool desktopSet = false;
+        private static bool exeSet = false;
         private void ButtonBrowseRdp_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -181,26 +211,33 @@ namespace RdpShortcutCreator
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+                    rdpSet = true;
                     textBoxRdp.Text = dialog.FileName;
 
                     List<string> names;
                     List<string> ids;
-
+                    statusLabel.Text = "Loading RDP Options...";
                     RdpAutomation.GetRdpCheckboxData(dialog.FileName, out names, out ids);
 
                     textBoxName.Text = Path.GetFileNameWithoutExtension(dialog.FileName);
 
                     ActivatOptionPicker(names, ids);
+                    if (IsReady())
+                        statusLabel.Text = "Ready.";
+                    else
+                        statusLabel.Text = "Please configure...";
                 }
+                else
+                    rdpSet = false;
             }
         }
-
+        private readonly string allItem = "-all : Selects all available options in the popup (without ticking here)";
         private void ActivatOptionPicker(List<string> allNames, List<string> all)
         {
             checkedList.Enabled = true;
 
             checkedList.Items.Clear();
-            checkedList.Items.Add("-all");
+            checkedList.Items.Add(allItem);
             optionsSelected.Clear();
             optionsSelected["-all"] = false;
             optionIds.Clear();
@@ -211,7 +248,7 @@ namespace RdpShortcutCreator
 
             foreach (var nm in allNames)
             {
-                var opt = $"{nm} + (Id: {all[cnt]})";
+                var opt = $"{nm} - (Id: {all[cnt]})";
                 optionIds.Add(all[cnt]);
                 optionsSelected[all[cnt]] = false;
                 options.Add(opt);
@@ -224,7 +261,7 @@ namespace RdpShortcutCreator
             yOffset = Math.Min((options.Count + 1) * 23,240);
 
             checkedList.Size = new System.Drawing.Size(400, yOffset);
-
+            statusLabel.Location = new System.Drawing.Point(200, 305 + yOffset);
             buttonCreate.Location = new System.Drawing.Point(20, 300 + yOffset);
             labelName.Location = new System.Drawing.Point(20, 240 + yOffset);
             textBoxName.Location = new System.Drawing.Point(20, 265 + yOffset);
@@ -237,7 +274,7 @@ namespace RdpShortcutCreator
             string currentItem = checkedList.Items[e.Index].ToString();
             bool currentChecked = e.NewValue == CheckState.Checked;
 
-            if (currentItem == "-all")
+            if (currentItem == allItem)
             {
                 optionsSelected["-all"] = currentChecked;
 
@@ -258,7 +295,7 @@ namespace RdpShortcutCreator
          private void CheckedList_Click(object sender, EventArgs e)
         {
             bool newState = !optionsSelected["-all"];
-            if (checkedList.SelectedItem?.ToString() == "-all")
+            if (checkedList.SelectedItem?.ToString() == allItem)
             {
                 
 
