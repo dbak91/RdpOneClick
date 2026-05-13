@@ -5,7 +5,10 @@
 Automates clicking through the new RDP security prompt to revert to the old 
 double-click-and-type UX.
 
-## **Example**
+## Latest
+V5.0 Now comes with a gui set up wizard!
+
+## **Example (manual)**
 
 
 #### Path mode 
