@@ -1,5 +1,8 @@
 # **RDP Auto Click Tool**
 
+##  Issue 
+English windows language only atm. Update soon
+
 ## **Overview**
 
 Automates clicking through the new RDP security prompt to revert to the old 
