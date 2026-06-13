@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Automation;
@@ -21,7 +22,7 @@ namespace RdpAutoClickNew.Services
         {
             LaunchRdp(rdpPath);
 
-            window = WaitForWindow("Remote Desktop Connection security warning", 15000);
+            window = WaitForWindow( 15000);
 
             return window != null;
         }
@@ -47,23 +48,38 @@ namespace RdpAutoClickNew.Services
          * e.g. a window named @title
          */
 
-        static AutomationElement WaitForWindow(string title, int timeout)
+        static AutomationElement WaitForWindow( int timeout)
         {
             int elapsed = 0;
 
             while (elapsed < timeout)
             {
-                AutomationElement root = AutomationElement.RootElement;
+                AutomationElementCollection windows =
+                    AutomationElement.RootElement.FindAll(
+                        TreeScope.Children,
+                        Condition.TrueCondition);
 
-                AutomationElement win = root.FindFirst(
-                    TreeScope.Children,
-                    new PropertyCondition(AutomationElement.NameProperty, title));
-
-                if (win != null)
+                foreach (AutomationElement win in windows)
                 {
+                    try
+                    {
+                        if (win.Current.ClassName != "#32770")
+                            continue;
 
-                    Thread.Sleep(50);
-                    return win;
+                        string processName =
+                            Process.GetProcessById(win.Current.ProcessId).ProcessName;
+
+                        if (!processName.Equals("mstsc",
+                            StringComparison.OrdinalIgnoreCase))
+                            continue;
+
+                        Thread.Sleep(50);
+                        return win;
+                    }
+                    catch
+                    {
+                        // Window may have closed while inspecting it
+                    }
                 }
 
                 Thread.Sleep(50);
@@ -72,7 +88,6 @@ namespace RdpAutoClickNew.Services
 
             return null;
         }
-
         /*
          * Searches an established window for all checkboxes and does either 
          * 
