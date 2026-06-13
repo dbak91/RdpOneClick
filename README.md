@@ -1,7 +1,7 @@
 # **RDP Auto Click Tool**
 
-##  Issue 
-English windows language only atm. Update soon
+##  New
+Localisation now universal.
 
 ## **Overview**
 
