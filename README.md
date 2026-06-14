@@ -1,14 +1,13 @@
 # **RDP Auto Click Tool**
 
-##  New
-Localisation now universal.
-
 ## **Overview**
 
 Automates clicking through the new RDP security prompt to revert to the old 
 double-click-and-type UX.
 
 ## Latest
+Localisation now universal. (Prior was restricted to English).
+
 V5.0 Now comes with a gui set up wizard!
 
 Download both exes then configure the setup wizard to point to Desktop, RdpAutoClick.exe and the target .rdp file, select desired options and press create shortcut.
