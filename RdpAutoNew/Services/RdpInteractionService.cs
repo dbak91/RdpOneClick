@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Automation;
+using System.Xml.Linq;
 
 namespace RdpAutoClickNew.Services
 {
@@ -99,8 +100,8 @@ namespace RdpAutoClickNew.Services
         public static List<string> ProcessAllAvailableCheckboxes( int reportOrGet = 0)
         {
             if (reportOrGet > 1 || reportOrGet < 0)
-                Message("Error, program has passed an invalid type to ProcessAllAvailableCheckboxes (" + reportOrGet.ToString() + "), when only 0 or 1 accepted");
-
+                Message(LanguageService.T("InvalidProcessType") + ": '" + reportOrGet.ToString() + "'");
+            
             var checkboxes = window.FindAll(
                                     TreeScope.Descendants,
                                     new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.CheckBox)
@@ -154,13 +155,13 @@ namespace RdpAutoClickNew.Services
 
                 if (el == null)
                 {
-                    Message("Checkbox not found: ID/Name:'" + searchValue + "'");
+                    Message(LanguageService.T("CheckboxNotFound") + ": '" + searchValue + "'");
                     return false;
                 }
 
                 if (el.Current.ControlType != ControlType.CheckBox)
                 {
-                    Message("Not a checkbox: ID/Name:'" + searchValue + "'");//
+                    Message(LanguageService.T("NotCheckbox") + ": '" + searchValue + "'");
                     return false;
                 }
 
@@ -172,7 +173,7 @@ namespace RdpAutoClickNew.Services
                 }
                 catch
                 {
-                    Message("Checkbox not interactable: ID/Name:'" + searchValue + "'");
+                    Message(LanguageService.T("CheckboxNotInteractable") + ": '" + searchValue + "'");
                     return false;
                 }
             }
@@ -205,7 +206,7 @@ namespace RdpAutoClickNew.Services
 
                 if (el == null)
                 {
-                    Message("Button not found: '" + name + "'");
+                    Message(LanguageService.T("ButtonNotFound") + ": '" + name + "'");
                     return false;
                 }
 
@@ -217,12 +218,13 @@ namespace RdpAutoClickNew.Services
                 }
                 catch
                 {
-                    Message("Button not clickable: '" + name + "'");
+                    Message(LanguageService.T("ButtonNotClickable")+": '" + name + "'");
                     return false;
                 }
             }
             catch (Exception ex)
             {
+
                 Message("Error clicking '" + name + "': " + ex.Message);
                 return false;
             }
