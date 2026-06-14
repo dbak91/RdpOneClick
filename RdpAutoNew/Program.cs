@@ -2,6 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Xml.Linq;
 
 class Program
 {
@@ -23,7 +24,12 @@ class Program
     {
         if (args.Length < 1)
         {
-            Message("No Parameters. Missing RDP path'"+Environment.NewLine +"'-usage' To see parameter usage");
+            Message(LanguageService.T("NoParameters"));
+            return;
+        }
+        if (args.Length >= 1 && args[0] == "-usage")
+        {
+            ShowUsage();
             return;
         }
 
@@ -31,7 +37,7 @@ class Program
 
         if (!establishedWindow)
         {
-            Message("RDP window not found");
+            Message(LanguageService.T("WindowNotFound"));
             return;
         }
 
@@ -43,11 +49,7 @@ class Program
         }
 
 
-        if (args.Length > 1 && args[1] == "-usage")
-        {
-            ShowUsage();
-            return;
-        }
+   
 
         // Get all checkbox Ids and toggle
         if (args.Length > 1 && args[1] == "-all")
@@ -76,31 +78,13 @@ class Program
         Thread.Sleep(50);
         if (!RdpInteractionService.ClickByName( "Connect"))
         {
-            Message("Failed to click Connect button");
+            Message(LanguageService.T("ConnectButtonFailed"));
         }
     }
 
     private static void ShowUsage()
     {
-        var usg = "Usage" + Environment.NewLine +
-                  "-----" +
-                  Environment.NewLine + Environment.NewLine +
-                  "'RdpAutoClick.exe <RdpPath> <Optional Checkbox Names or AutomationIds>'" +
-                  Environment.NewLine + "   E.g 'RdpAutoClick.exe Clipboard Drives  16553'" +
-                  Environment.NewLine + Environment.NewLine +
-                  "'RdpAutoClick.exe -usage'" +
-                  Environment.NewLine + "   This will show this message and explain exe usage" +
-                  Environment.NewLine + Environment.NewLine +
-                  "'RdpAutoClick.exe -all'" +
-                  Environment.NewLine + "   This will select all checkboxes before connecting" +
-
-                  Environment.NewLine + Environment.NewLine +
-                  "'RdpAutoClick.exe <RdpPath> -showIds'" +
-                  Environment.NewLine + "   This will report back the names and ids of all available Checkboxes'";
-
-                 
-
-        Message(usg, MB_ICONINFORMATION);
+        Message(LanguageService.T("Usage") , MB_ICONINFORMATION);
     }
     // Win32: message box
     [DllImport("user32.dll", CharSet = CharSet.Unicode)]
