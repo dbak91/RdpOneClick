@@ -34,22 +34,22 @@ public static class LanguageService
                 return "RDP window not found";
 
             case "CheckboxNotFound":
-                return "Checkbox not found: ID/Name:'{0}'";
+                return "Checkbox not found: ID/Name:";
 
             case "NotCheckbox":
-                return "Not a checkbox: ID/Name:'{0}'";
+                return "Not a checkbox: ID/Name:";
 
             case "CheckboxNotInteractable":
-                return "Checkbox not interactable: ID/Name:'{0}'";
+                return "Checkbox not interactable: ID/Name:";
 
             case "ButtonNotFound":
-                return "Button not found: '{0}'";
+                return "Button not found:";
 
             case "ButtonNotClickable":
-                return "Button not clickable: '{0}'";
+                return "Button not clickable: ";
 
             case "InvalidProcessType":
-                return "Error, program has passed an invalid type to ProcessAllAvailableCheckboxes ({0}), when only 0 or 1 accepted";
+                return "Error, program has passed an invalid type to ProcessAllAvailableCheckboxes (only 0 or 1 accepted, passed=";
 
             case "ConnectButtonFailed":
                 return "Failed to click Connect button";
@@ -84,22 +84,22 @@ public static class LanguageService
                 return "Ventana RDP no encontrada";
 
             case "CheckboxNotFound":
-                return "Casilla no encontrada: ID/Nombre:'{0}'";
+                return "Casilla no encontrada: ID/Nombre:";
 
             case "NotCheckbox":
-                return "No es una casilla: ID/Nombre:'{0}'";
+                return "No es una casilla: ID/Nombre:";
 
             case "CheckboxNotInteractable":
-                return "Casilla no interactuable: ID/Nombre:'{0}'";
+                return "Casilla no interactuable: ID/Nombre:";
 
             case "ButtonNotFound":
-                return "Botón no encontrado: '{0}'";
+                return "Botón no encontrado: ";
 
             case "ButtonNotClickable":
-                return "Botón no clicable: '{0}'";
+                return "Botón no clicable: ";
 
             case "InvalidProcessType":
-                return "Error, tipo inválido en ProcessAllAvailableCheckboxes ({0}), solo se acepta 0 o 1";
+                return "Error, tipo inválido en ProcessAllAvailableCheckboxes (solo se acepta 0 o 1, =";
 
             case "ConnectButtonFailed":
                 return "No se pudo hacer clic en el botón de conexión";
@@ -134,22 +134,22 @@ public static class LanguageService
                 return "Fenêtre RDP introuvable";
 
             case "CheckboxNotFound":
-                return "Case introuvable: ID/Nom:'{0}'";
+                return "Case introuvable: ID/Nom:";
 
             case "NotCheckbox":
-                return "Pas une case à cocher: ID/Nom:'{0}'";
+                return "Pas une case à cocher: ID/Nom:";
 
             case "CheckboxNotInteractable":
-                return "Case non interactive: ID/Nom:'{0}'";
+                return "Case non interactive: ID/Nom:";
 
             case "ButtonNotFound":
-                return "Bouton introuvable: '{0}'";
+                return "Bouton introuvable: ";
 
             case "ButtonNotClickable":
-                return "Bouton non cliquable: '{0}'";
+                return "Bouton non cliquable: ";
 
             case "InvalidProcessType":
-                return "Erreur, type invalide passé à ProcessAllAvailableCheckboxes ({0}), seulement 0 ou 1 accepté";
+                return "Erreur, type invalide passé à ProcessAllAvailableCheckboxes (seulement 0 ou 1 accepté, =";
 
             case "ConnectButtonFailed":
                 return "Impossible de cliquer sur le bouton de connexion";
@@ -184,22 +184,22 @@ public static class LanguageService
                 return "RDP-Fenster nicht gefunden";
 
             case "CheckboxNotFound":
-                return "Kontrollkästchen nicht gefunden: ID/Name:'{0}'";
+                return "Kontrollkästchen nicht gefunden: ID/Name:";
 
             case "NotCheckbox":
-                return "Kein Kontrollkästchen: ID/Name:'{0}'";
+                return "Kein Kontrollkästchen: ID/Name:";
 
             case "CheckboxNotInteractable":
-                return "Kontrollkästchen nicht bedienbar: ID/Name:'{0}'";
+                return "Kontrollkästchen nicht bedienbar: ID/Name:";
 
             case "ButtonNotFound":
-                return "Schaltfläche nicht gefunden: '{0}'";
+                return "Schaltfläche nicht gefunden: ";
 
             case "ButtonNotClickable":
-                return "Schaltfläche nicht anklickbar: '{0}'";
+                return "Schaltfläche nicht anklickbar: ";
 
             case "InvalidProcessType":
-                return "Fehler, ungültiger Typ in ProcessAllAvailableCheckboxes ({0}), nur 0 oder 1 erlaubt";
+                return "Fehler, ungültiger Typ in ProcessAllAvailableCheckboxes (nur 0 oder 1 erlaubt, =";
 
             case "ConnectButtonFailed":
                 return "Verbindungsschaltfläche konnte nicht angeklickt werden";
@@ -234,22 +234,22 @@ public static class LanguageService
                 return "Janela RDP não encontrada";
 
             case "CheckboxNotFound":
-                return "Caixa não encontrada: ID/Nome:'{0}'";
+                return "Caixa não encontrada: ID/Nome:";
 
             case "NotCheckbox":
-                return "Não é uma caixa: ID/Nome:'{0}'";
+                return "Não é uma caixa: ID/Nome:";
 
             case "CheckboxNotInteractable":
-                return "Caixa não interactiva: ID/Nome:'{0}'";
+                return "Caixa não interactiva: ID/Nome:";
 
             case "ButtonNotFound":
-                return "Botão não encontrado: '{0}'";
+                return "Botão não encontrado: ";
 
             case "ButtonNotClickable":
-                return "Botão não clicável: '{0}'";
+                return "Botão não clicável: ";
 
             case "InvalidProcessType":
-                return "Erro, tipo inválido em ProcessAllAvailableCheckboxes ({0}), apenas 0 ou 1 aceites";
+                return "Erro, tipo inválido em ProcessAllAvailableCheckboxes ( apenas 0 ou 1 aceites=";
 
             case "ConnectButtonFailed":
                 return "Falha ao clicar no botão de ligação";
@@ -284,22 +284,22 @@ public static class LanguageService
                 return "Finestra RDP non trovata";
 
             case "CheckboxNotFound":
-                return "Casella non trovata: ID/Nome:'{0}'";
+                return "Casella non trovata: ID/Nome:";
 
             case "NotCheckbox":
-                return "Non è una casella: ID/Nome:'{0}'";
+                return "Non è una casella: ID/Nome:";
 
             case "CheckboxNotInteractable":
-                return "Casella non utilizzabile: ID/Nome:'{0}'";
+                return "Casella non utilizzabile: ID/Nome:";
 
             case "ButtonNotFound":
-                return "Pulsante non trovato: '{0}'";
+                return "Pulsante non trovato: ";
 
             case "ButtonNotClickable":
-                return "Pulsante non cliccabile: '{0}'";
+                return "Pulsante non cliccabile: ";
 
             case "InvalidProcessType":
-                return "Errore, tipo non valido in ProcessAllAvailableCheckboxes ({0}), solo 0 o 1 accettati";
+                return "Errore, tipo non valido in ProcessAllAvailableCheckboxes (solo 0 o 1 accettati,=";
 
             case "ConnectButtonFailed":
                 return "Impossibile fare clic sul pulsante di connessione";
@@ -334,22 +334,22 @@ public static class LanguageService
                 return "Окно RDP не найдено";
 
             case "CheckboxNotFound":
-                return "Флажок не найден: ID/Имя:'{0}'";
+                return "Флажок не найден: ID/Имя:";
 
             case "NotCheckbox":
-                return "Не флажок: ID/Имя:'{0}'";
+                return "Не флажок: ID/Имя:";
 
             case "CheckboxNotInteractable":
-                return "Флажок недоступен: ID/Имя:'{0}'";
+                return "Флажок недоступен: ID/Имя:";
 
             case "ButtonNotFound":
-                return "Кнопка не найдена: '{0}'";
+                return "Кнопка не найдена: ";
 
             case "ButtonNotClickable":
-                return "Невозможно нажать кнопку: '{0}'";
+                return "Невозможно нажать кнопку: ";
 
             case "InvalidProcessType":
-                return "Ошибка, неверный тип ProcessAllAvailableCheckboxes ({0}), допустимо только 0 или 1";
+                return "Ошибка, неверный тип ProcessAllAvailableCheckboxes ( допустимо только 0 или 1,=";
 
             case "ConnectButtonFailed":
                 return "Не удалось нажать кнопку подключения";
@@ -384,22 +384,22 @@ public static class LanguageService
                 return "RDPウィンドウが見つかりません";
 
             case "CheckboxNotFound":
-                return "チェックボックスが見つかりません: ID/名前:'{0}'";
+                return "チェックボックスが見つかりません: ID/名前:";
 
             case "NotCheckbox":
-                return "チェックボックスではありません: ID/名前:'{0}'";
+                return "チェックボックスではありません: ID/名前:";
 
             case "CheckboxNotInteractable":
-                return "チェックボックスを操作できません: ID/名前:'{0}'";
+                return "チェックボックスを操作できません: ID/名前:";
 
             case "ButtonNotFound":
-                return "ボタンが見つかりません: '{0}'";
+                return "ボタンが見つかりません: ";
 
             case "ButtonNotClickable":
-                return "ボタンをクリックできません: '{0}'";
+                return "ボタンをクリックできません: ";
 
             case "InvalidProcessType":
-                return "エラー、ProcessAllAvailableCheckboxes に無効な型 ({0})、0または1のみ許可";
+                return "エラー、ProcessAllAvailableCheckboxes に無効な型 (、0または1のみ許可,=";
 
             case "ConnectButtonFailed":
                 return "接続ボタンをクリックできませんでした";
@@ -434,22 +434,22 @@ public static class LanguageService
                 return "RDP 창을 찾을 수 없습니다";
 
             case "CheckboxNotFound":
-                return "체크박스를 찾을 수 없습니다: ID/이름:'{0}'";
+                return "체크박스를 찾을 수 없습니다: ID/이름:";
 
             case "NotCheckbox":
-                return "체크박스가 아닙니다: ID/이름:'{0}'";
+                return "체크박스가 아닙니다: ID/이름:";
 
             case "CheckboxNotInteractable":
-                return "체크박스를 조작할 수 없습니다: ID/이름:'{0}'";
+                return "체크박스를 조작할 수 없습니다: ID/이름:";
 
             case "ButtonNotFound":
-                return "버튼을 찾을 수 없습니다: '{0}'";
+                return "버튼을 찾을 수 없습니다: ";
 
             case "ButtonNotClickable":
-                return "버튼을 클릭할 수 없습니다: '{0}'";
+                return "버튼을 클릭할 수 없습니다: ";
 
             case "InvalidProcessType":
-                return "오류, ProcessAllAvailableCheckboxes 잘못된 유형 ({0}), 0 또는 1만 허용";
+                return "오류, ProcessAllAvailableCheckboxes 잘못된 유형 (, 0 또는 1만 허용,=";
 
             case "ConnectButtonFailed":
                 return "연결 버튼을 클릭하지 못했습니다";
@@ -484,22 +484,22 @@ public static class LanguageService
                 return "未找到RDP窗口";
 
             case "CheckboxNotFound":
-                return "未找到复选框: ID/名称:'{0}'";
+                return "未找到复选框: ID/名称:";
 
             case "NotCheckbox":
-                return "不是复选框: ID/名称:'{0}'";
+                return "不是复选框: ID/名称:";
 
             case "CheckboxNotInteractable":
-                return "复选框无法操作: ID/名称:'{0}'";
+                return "复选框无法操作: ID/名称:";
 
             case "ButtonNotFound":
-                return "未找到按钮: '{0}'";
+                return "未找到按钮: ";
 
             case "ButtonNotClickable":
-                return "按钮无法点击: '{0}'";
+                return "按钮无法点击: ";
 
             case "InvalidProcessType":
-                return "错误，ProcessAllAvailableCheckboxes 参数无效 ({0})，仅允许 0 或 1";
+                return "错误，ProcessAllAvailableCheckboxes 参数无效 (，仅允许 0 或 1,=";
 
             case "ConnectButtonFailed":
                 return "无法点击连接按钮";
