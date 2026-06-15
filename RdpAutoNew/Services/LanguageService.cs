@@ -1,5 +1,11 @@
 ﻿using System.Globalization;
 
+/*
+ * Localisation class for top ten languages for user/error messages
+ * 
+ * Uses windows iso 2 letter language key, defaulting to English. 
+ * 
+ */
 public static class LanguageService
 {
     private static readonly string L =
@@ -58,11 +64,12 @@ public static class LanguageService
                 return
                     "Usage\n" +
                     "-----\n\n" +
-                    "'RdpAutoClick.exe <RdpPath> <Optional Checkbox Names or AutomationIds>'\n" +
-                    "   E.g 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   This will show this message and explain exe usage\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> <Optional Checkbox Names or AutomationIds>'\n" +
+                    " E.g 'RdpAutoClick.exe Clipboard Drives 16553'\n" +
+                    "   This will click checkboxes named Clipboard and Drives and with Id 16553\n\n"+
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   This will select all checkboxes before connecting\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   This will report back the names and ids of all available Checkboxes";
@@ -112,7 +119,7 @@ public static class LanguageService
                     "   Ej: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Muestra este mensaje y explica el uso\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Selecciona todas las casillas antes de conectar\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Muestra nombres e IDs de todas las casillas disponibles";
@@ -162,7 +169,7 @@ public static class LanguageService
                     "   Ex: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Affiche ce message et explique l'utilisation\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Sélectionne toutes les cases avant connexion\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Affiche les noms et IDs de toutes les cases disponibles";
@@ -212,7 +219,7 @@ public static class LanguageService
                     "   Bsp: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Zeigt diese Meldung und erklärt die Nutzung\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Aktiviert alle Kontrollkästchen vor Verbindung\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Zeigt Namen und IDs aller verfügbaren Kontrollkästchen";
@@ -262,7 +269,7 @@ public static class LanguageService
                     "   Ex: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Mostra esta mensagem e explica utilização\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Selecciona todas as caixas antes de ligar\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Mostra nomes e IDs de todas as caixas disponíveis";
@@ -312,7 +319,7 @@ public static class LanguageService
                     "   Es: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Mostra questo messaggio e spiega utilizzo\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Seleziona tutte le caselle prima della connessione\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Mostra nomi e ID di tutte le caselle disponibili";
@@ -362,7 +369,7 @@ public static class LanguageService
                     "   Пример: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   Показать это сообщение и справку\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   Выбрать все флажки перед подключением\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   Показать все доступные флажки";
@@ -412,7 +419,7 @@ public static class LanguageService
                     "   例: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   このメッセージと使用方法を表示\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   接続前にすべてのチェックボックスを選択\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   利用可能なチェックボックス一覧を表示";
@@ -462,7 +469,7 @@ public static class LanguageService
                     "   예: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   이 메시지 및 사용법 표시\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   연결 전 모든 체크박스 선택\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   사용 가능한 체크박스 이름 및 ID 표시";
@@ -512,7 +519,7 @@ public static class LanguageService
                     "   示例: 'RdpAutoClick.exe Clipboard Drives 16553'\n\n" +
                     "'RdpAutoClick.exe -usage'\n" +
                     "   显示此消息并说明用法\n\n" +
-                    "'RdpAutoClick.exe -all'\n" +
+                    "'RdpAutoClick.exe <RdpPath> -all'\n" +
                     "   连接前选择所有复选框\n\n" +
                     "'RdpAutoClick.exe <RdpPath> -showIds'\n" +
                     "   显示所有可用复选框名称和ID";
