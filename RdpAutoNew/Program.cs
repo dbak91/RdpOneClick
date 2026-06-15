@@ -12,9 +12,10 @@ class Program
      * Orchestrates logic from arguments and uses RdpInteractionService for all
      * handling of the rdp window
      * 
-     * - establish window
-     * - if arg = -showIds, process all available checkboxes
-     * - if arg = -usage, show prameter usage
+     * - Validate min parameters
+     * - if arg = -usage, show parameter usage and exit
+     * - establish rdp window
+     * - if arg = -showIds, process all available checkboxes and report ids to user, then exit
      * - if arg = -all, get all ids and toggle checkboxes
      * - else arg = names or ids, if int toggle by id else toggle by name
      * - press connect button
@@ -61,7 +62,7 @@ class Program
 
                 RdpInteractionService.ToggleCheckboxById(id);
             }
-        }// Toggle bya args
+        }// Toggle by args (ID if int)
         else
             for (int i = 1; i < args.Length; i++)
             {
@@ -76,7 +77,9 @@ class Program
                
             }
         Thread.Sleep(50);
-        if (!RdpInteractionService.ClickButtonById( "1"))
+
+        var connectButtonId = "1";
+        if (!RdpInteractionService.ClickButtonById( connectButtonId))
         {
             Message(LanguageService.T("ConnectButtonFailed"));
         }
