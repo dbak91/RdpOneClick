@@ -76,7 +76,7 @@ class Program
                
             }
         Thread.Sleep(50);
-        if (!RdpInteractionService.ClickByName( "Connect"))
+        if (!RdpInteractionService.ClickButtonById( "1"))
         {
             Message(LanguageService.T("ConnectButtonFailed"));
         }

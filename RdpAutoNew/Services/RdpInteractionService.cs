@@ -64,7 +64,8 @@ namespace RdpAutoClickNew.Services
                 {
                     try
                     {
-                        if (win.Current.ClassName != "#32770")
+                        var formTypeClassName = "#32770";
+                        if (win.Current.ClassName != formTypeClassName)
                             continue;
 
                         string processName =
@@ -92,8 +93,8 @@ namespace RdpAutoClickNew.Services
         /*
          * Searches an established window for all checkboxes and does either 
          * 
-         * reportOrGet = 0 : output as a message all the names and ids
-         * reportOrGet = 1 : return a list of the ids found
+         * reportOrGet = 0 : output as a user message all the names and ids
+         * reportOrGet = 1 : return a list of the ids found programmatically
          * 
          * 
          */
@@ -196,17 +197,17 @@ namespace RdpAutoClickNew.Services
             return ToggleCheckbox(searchCond);
 
         }
-        public static bool ClickByName( string name)
+        public static bool ClickButtonById( string buttonId)
         {
             try
             {
                 AutomationElement el = window.FindFirst(
                     TreeScope.Descendants,
-                    new PropertyCondition(AutomationElement.NameProperty, name));
+                    new PropertyCondition(AutomationElement.AutomationIdProperty, buttonId));
 
                 if (el == null)
                 {
-                    Message(LanguageService.T("ButtonNotFound") + ": '" + name + "'");
+                    Message(LanguageService.T("ButtonNotFound") + ": id='" + buttonId + "'");
                     return false;
                 }
 
@@ -214,18 +215,19 @@ namespace RdpAutoClickNew.Services
                 {
                     object pattern = el.GetCurrentPattern(InvokePattern.Pattern);
                     ((InvokePattern)pattern).Invoke();
+                    
                     return true;
                 }
                 catch
                 {
-                    Message(LanguageService.T("ButtonNotClickable")+": '" + name + "'");
+                    Message(LanguageService.T("ButtonNotClickable") + ": id='" + buttonId + "'");
                     return false;
                 }
             }
             catch (Exception ex)
             {
 
-                Message("Error clicking '" + name + "': " + ex.Message);
+                Message("Error clicking '" + ": id='" + buttonId + ex.Message);
                 return false;
             }
         }
