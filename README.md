@@ -38,6 +38,12 @@ This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
 Youtube    watch?v=VETpTN30J1Y
 
 ## Version differences
+#### V6.0
+The first version to both **support every windows language** and use a dictionary of top ten languages for user/error messages. 
+
+#### V5.0
+Now with a easy to use GUI set up wizard
+
 #### V4.0
 The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
 Flaws:  
