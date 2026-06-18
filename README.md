@@ -5,7 +5,13 @@
 Automates clicking through the new RDP security prompt to revert to the old 
 double-click-and-type UX.
 
+## Brief ## 
+Double click/ open the .exe with no paramaters to use the GUI set up wizard, else set up manually following instructions below.
+<img width="612" height="609" alt="image" src="https://github.com/user-attachments/assets/9cfe4bd3-3fd0-4d2d-b33a-7b931a0ee3b0" />
+
 ## Latest
+Single combined exe for gui and clickbot. 
+
 Localisation now universal. (Prior was restricted to English).
 
 V5.0 Now comes with a gui set up wizard!
