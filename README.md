@@ -14,9 +14,6 @@ Single combined exe for gui and clickbot.
 
 Localisation now universal. (Prior was restricted to English).
 
-V5.0 Now comes with a gui set up wizard!
-
-Download both exes then configure the setup wizard to point to Desktop, RdpAutoClick.exe and the target .rdp file, select desired options and press create shortcut.
 ## **Example (manual)**
 
 
