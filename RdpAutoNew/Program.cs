@@ -1,9 +1,10 @@
 ﻿using RdpAutoClickNew.Services;
+using RdpShortcutCreator;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Xml.Linq;
-
+using System.Windows.Forms;
 class Program
 {
     /*
@@ -21,11 +22,14 @@ class Program
      * - press connect button
      * 
      */
+
+    [STAThread]
     static void Main(string[] args)
     {
-        if (args.Length < 1)
+        if (args.Length == 0)
         {
-            Message(LanguageService.T("NoParameters"));
+            Application.EnableVisualStyles();
+            Application.Run(new ShortcutCreatorForm());
             return;
         }
         if (args.Length >= 1 && args[0] == "-usage")
@@ -38,7 +42,7 @@ class Program
 
         if (!establishedWindow)
         {
-            Message(LanguageService.T("WindowNotFound"));
+            NativeMethods.Message(LanguageService.T("WindowNotFound"));
             return;
         }
 
@@ -81,24 +85,15 @@ class Program
         var connectButtonId = "1";
         if (!RdpInteractionService.ClickButtonById( connectButtonId))
         {
-            Message(LanguageService.T("ConnectButtonFailed"));
+            NativeMethods.Message(LanguageService.T("ConnectButtonFailed"));
         }
     }
 
     private static void ShowUsage()
     {
-        Message(LanguageService.T("Usage") , MB_ICONINFORMATION);
+        const uint MB_ICONINFORMATION = 0x00000040;
+        
+        NativeMethods.Message(LanguageService.T("Usage") , MB_ICONINFORMATION);
     }
-    // Win32: message box
-    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-    private static extern int MessageBoxW(IntPtr hWnd, string text, string caption, uint type);
-
-    const uint MB_OK = 0x00000000;
-    const uint MB_ICONERROR = 0x00000010;
-    const uint MB_ICONWARNING = 0x00000030;
-    const uint MB_ICONINFORMATION = 0x00000040;
-    public static void Message(string msg, uint type = MB_ICONERROR)
-    {
-        MessageBoxW(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | type);
-    }
+    
 }

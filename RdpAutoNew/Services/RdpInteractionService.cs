@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RdpShortcutCreator;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -28,19 +29,9 @@ namespace RdpAutoClickNew.Services
             return window != null;
         }
 
-        // Win32: launch process
-        [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
-        private static extern IntPtr ShellExecute(
-            IntPtr hwnd,
-            string lpOperation,
-            string lpFile,
-            string lpParameters,
-            string lpDirectory,
-            int nShowCmd);
-
         static void LaunchRdp(string path)
         {
-            ShellExecute(IntPtr.Zero, "open", "mstsc.exe", "\"" + path + "\"", null, 1);
+            NativeMethods.ShellExecute(IntPtr.Zero, "open", "mstsc.exe", "\"" + path + "\"", null, 1);
         }
 
         /*
@@ -108,7 +99,7 @@ namespace RdpAutoClickNew.Services
                                     new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.CheckBox)
                                 );
 
-            var report = ($"Found {checkboxes.Count} checkboxes:\n");
+            var report = (LanguageService.T("FoundCheckboxes")+$" {checkboxes.Count}:\n");
             List<string> all = new List<string>();
             int cnt = 1;
             foreach (AutomationElement cb in checkboxes)
@@ -130,12 +121,46 @@ namespace RdpAutoClickNew.Services
             return null;
 
         }
+
+        public static void GetRdpCheckboxData(string rdpPath, out List<string> names, out List<string> ids)
+        {
+            names = new List<string>();
+            ids = new List<string>();
+
+            LaunchRdp(rdpPath);
+            AutomationElement window = WaitForWindow(15000);
+
+            if (window == null)
+            {
+                Message(LanguageService.T("WindowNotFound"));
+                return;
+            }
+
+            var checkboxes = window.FindAll(
+                TreeScope.Descendants,
+                new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.CheckBox));
+
+            foreach (AutomationElement cb in checkboxes)
+            {
+                names.Add(cb.Current.Name);
+                ids.Add(cb.Current.AutomationId);
+            }
+
+            try
+            {
+                var windowPattern = window.GetCurrentPattern(WindowPattern.Pattern) as WindowPattern;
+                windowPattern?.Close();
+            }
+            catch { }
+        }
+
+
         const uint MB_ICONERROR = 0x00000010;
 
         // wrapper
         public static void Message(string msg, uint type = MB_ICONERROR)
         {
-            Program.Message(msg, type);
+            NativeMethods.Message(msg, type);
         }
        
         /*
@@ -180,7 +205,7 @@ namespace RdpAutoClickNew.Services
             }
             catch (Exception ex)
             {
-                Program.Message("Error toggling ID/Name'" + searchValue + "': " + ex.Message);
+                Message(LanguageService.T("ErrorToggling") + searchValue + "': " + ex.Message);
                 return false;
             }
         }
@@ -227,7 +252,7 @@ namespace RdpAutoClickNew.Services
             catch (Exception ex)
             {
 
-                Message("Error clicking '" + ": id='" + buttonId + ex.Message);
+                Message(LanguageService.T("ErrorClickingButton") + buttonId + ex.Message);
                 return false;
             }
         }

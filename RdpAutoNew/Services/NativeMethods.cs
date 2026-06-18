@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace RdpShortcutCreator
-{
-    internal static class NativeMethods
+
+    public static class NativeMethods
     {
         [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
         public static extern IntPtr ShellExecute(
@@ -26,9 +25,8 @@ namespace RdpShortcutCreator
         public const uint MB_ICONWARNING = 0x00000030;
         public const uint MB_ICONINFORMATION = 0x00000040;
 
-        static void Message(string msg, uint type = MB_ICONERROR)
+        public static void Message(string msg, uint type = MB_ICONERROR)
         {
             MessageBoxW(IntPtr.Zero, msg, "RDP AutoClick", MB_OK | type);
         }
     }
-}
