@@ -38,33 +38,6 @@ This will pre-click checkboxes named 'Clipboard' and 'Drives' then connect
 - Since this is a security pop up it is automating it may get blocked one day. The intention to increase security a little bit is to ensure the machine name the user expects is still in the rdp file by adding a new "connectTo" parameter and verifying the rdp matches. This atleast means the user has passed and checked the machine hasnt changed. (tbd)
 
 
-## In action
-
-Youtube    watch?v=VETpTN30J1Y
-
-## Version differences
-#### V6.0
-The first version to both **support every windows language** and use a dictionary of top ten languages for user/error messages. 
-
-#### V5.0
-Now with a easy to use GUI set up wizard
-
-#### V4.0
-The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
-Flaws:  
-- NET 4.8 must be installaled. (Already present on most moderrn systems)
-
-#### V3.0 / V3.2
-This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name   
-Note:  
-- These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.  
-Flaws:  
-- Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
-
-#### V2.0
-This is the last self contained visual basic version.  
-Flaws:  
-- Large file size and slow to start until cached.
 ## **Modes**
 
 #### Path mode (V4.0+)  
@@ -94,7 +67,9 @@ RdpAutoClick.exe click \[rdpX] \[rdpY] \[connectX] \[connectY] \[optional pre cl
 
 Optionally change the icon of the shortcut to be RDP icon. 'Richt Click - Properties - Change Icon - Browse - C:\\Windows\\System32\\mstsc.exe  
 
+## In action
 
+Youtube    watch?v=VETpTN30J1Y
 ## **Instructions**
 
 #### Path mode V4.0+
@@ -132,6 +107,34 @@ e.g.) Target:# RdpAutoClick.exe "C:\Users\Dave\Desktop\WIN10.rdp" Clipboard Driv
 -  Create desktop shortcut of .exe and name it after your chosen rdp file/vm name
 - Edit desktop shortcut properties Target field to include parameters: See Usage,
 E.g.) Target:# RdpAutoClick.exe "C:\\USERS\\BAKERDA\\Desktop\\WIN10.rdp"  1104 659 768 561 (This expects the rdp at 1104 659 and the connect button at 768 561 with no pre clicks defined
+
+
+## Version differences
+#### V7.0 
+The first version to use a single .exe
+
+#### V6.0
+The first version to both **support every windows language** and use a dictionary of top ten languages for user/error messages. 
+
+#### V5.0
+Now with a easy to use GUI set up wizard
+
+#### V4.0
+The first NET 4.8 dependant version and the first version to automate the clicking by button name.  
+Flaws:  
+- NET 4.8 must be installaled. (Already present on most moderrn systems)
+
+#### V3.0 / V3.2
+This is the first c# versions and the last 2 versions based on clicking at x and y coordinates as oppose to button name   
+Note:  
+- These have not been tested thoroughly for dependencies. The target was NET 8.0 framework so it is possible NET 8 may be required.  
+Flaws:  
+- Click locations require fixed resolution so any resolution change (such as going from wfh to office) will need their own shortcuts.
+
+#### V2.0
+This is the last self contained visual basic version.  
+Flaws:  
+- Large file size and slow to start until cached.
 
 
 
