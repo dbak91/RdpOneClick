@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RdpAutoClickNew")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Fujitsu")]
+[assembly: AssemblyCompany("Individual (David Baker)")]
 [assembly: AssemblyProduct("RdpAutoClick")]
-[assembly: AssemblyCopyright("Copyright © Fujitsu 2026")]
+[assembly: AssemblyCopyright("Copyright © D.Baker 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
