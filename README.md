@@ -6,7 +6,7 @@ Automates clicking through the new RDP security prompt to revert to the old
 double-click-and-type UX.
 
 ## Brief ## 
-Double click/ open the .exe with no paramaters to use the GUI set up wizard, else set up manually following instructions below.
+Double click/ open the .exe with no paramaters to use the GUI set up wizard to configure and create an Auto-Rdp shortcut, else set up manually following instructions below.
 
 <img width="612" height="609" alt="image" src="https://github.com/user-attachments/assets/cd701aff-fd44-4c2a-8aac-d44d7bceccd2" />
 
