@@ -58,6 +58,7 @@ namespace RdpShortcutCreator
             labelDesktop = new Label();
             labelDesktop.Text = LanguageService.T("DesktopLabel");
             labelDesktop.Location = new System.Drawing.Point(20, 20);
+            labelDesktop.Size = new System.Drawing.Size(200, 23);
             this.Controls.Add(labelDesktop);
 
             textBoxDesktop = new TextBox();
@@ -113,6 +114,7 @@ namespace RdpShortcutCreator
             labelRdp = new Label();
             labelRdp.Text = LanguageService.T("TargetRdp"); 
             labelRdp.Location = new System.Drawing.Point(20, 140);
+            labelRdp.Size = new System.Drawing.Size(200, 23);
             this.Controls.Add(labelRdp);
 
             textBoxRdp = new TextBox();
@@ -143,7 +145,7 @@ namespace RdpShortcutCreator
             checkedList = new CheckedListBox();
             checkedList.Enabled = false;
             checkedList.Location = new System.Drawing.Point(20, 225);
-            checkedList.Size = new System.Drawing.Size(400, 23);
+            checkedList.Size = new System.Drawing.Size(540, 23);
             checkedList.Items.Add(allItem);
             checkedList.ItemCheck += CheckedList_ItemCheck;
             checkedList.Click += CheckedList_Click;
@@ -159,11 +161,12 @@ namespace RdpShortcutCreator
             labelName = new Label();
             labelName.Text = LanguageService.T("ShortcutName");
             labelName.Location = new System.Drawing.Point(20, 260);
+            labelName.Size = new System.Drawing.Size(200, 23);
             this.Controls.Add(labelName);
 
             textBoxName = new TextBox();
             textBoxName.Location = new System.Drawing.Point(20, 285);
-            textBoxName.Size = new System.Drawing.Size(400, 23);
+            textBoxName.Size = new System.Drawing.Size(540, 23);
             this.Controls.Add(textBoxName);
 
             // CREATE
